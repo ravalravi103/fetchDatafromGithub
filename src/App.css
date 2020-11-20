@@ -1,0 +1,54 @@
+.user-profile{
+  display: flex;
+  padding: 50px;
+  align-items: flex-start;
+}
+
+.user-One{
+  background-color: #61dafb;
+  margin: 40px;
+  padding: 30px;
+}
+.user-Two{
+  background-color: #777;
+  margin: 40px;
+  padding: 30px;
+}
+
+a:link{
+  color: #000;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 100;
+}
+
+.userInputbox-one,
+.userInputbox-two{
+   font-size: 18px;
+   margin: 20px;
+   padding: 10px;
+}
+
+.getDataBtn{
+  background-color: rgb(6, 6, 77);
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 30px;
+}
+
+.user-list{
+  display: grid;
+  grid-template-columns: repeat(4,auto);
+}
+
+.click-this-btn{
+  align-items: center;
+  padding: 5px 15px;
+  border-radius: 20px;
+  background-color: brown;
+  color: #fff;
+}
+
+.user-item{
+   
+}
