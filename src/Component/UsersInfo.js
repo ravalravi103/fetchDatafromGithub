@@ -2,6 +2,7 @@ import React from 'react'
 
 function UsersInfo({finalUser,userRepos}) {
     const profileImageStyle = {
+        // create style use karva nu
         width: '200px',
         height : '200px',
         borderRadius: '50%',
@@ -9,7 +10,10 @@ function UsersInfo({finalUser,userRepos}) {
     }
 
     return (
-        (finalUser)? <div>
+        <div className="single-user-item">
+            {/* use Fragment instead of div 
+                 no need to check for finaluser again
+            */}
         {console.log(finalUser)}
         <img src={finalUser.avatar_url} alt={finalUser.login} style={profileImageStyle}/>
         <h4>Name :{finalUser.login}</h4>
@@ -24,7 +28,7 @@ function UsersInfo({finalUser,userRepos}) {
                 <a href={repo.html_url}><h5>{repo.name}</h5></a>
              )
          })}
-    </div> : null
+    </div> 
     )
 }
 

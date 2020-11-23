@@ -1,8 +1,8 @@
-import React,{useEffect, useState} from 'react';
+import React,{useState} from 'react';
 
 import UsersInfo from './UsersInfo';
 
-function UserList({users,userRepos}) {
+function UserList({users}) {
     
    const [finalUser,setFinalUser] = useState({});
    const [finalUserRepo,setFinalUserRepo] = useState([]);
@@ -14,9 +14,13 @@ function UserList({users,userRepos}) {
         border : "1px soild #777"
     }
    
+    
+
     const fetchUserRepo = async (name) => {
+        // use Single Promoise instead of Two
         const response = await fetch(`https://api.github.com/users/${name}/repos`);
         const data = await response.json();
+        console.log(data)
         setFinalUserRepo(data);
     }
 
@@ -24,23 +28,20 @@ function UserList({users,userRepos}) {
     fetchUserRepo(e.target.name)
      console.log(e.target.id)
      console.log(e.target.name)
-
      fetch(`https://api.github.com/users/${e.target.name}`)
       .then(res => res.json())
       .then(singleUser => setFinalUser(singleUser))
       .catch(err => console.log(err))
-
-      
-    //  const tempArr = users.filter(user => user.id!==e.target.id)
-    //  console.log(tempArr)
-    //    setFinalUser(tempArr)
     }
 
   
 
     return (
+        <>
         <div className='user-list'>
-            {(users) ?<div>
+            {/* dont use Div  uer React Fragmnet*/}
+            {/* use && INSTEAD OF TERNARY */}
+            {(users) ? <>
                 {users.map(user => {
                     return(
                         <div className="user-item">
@@ -51,10 +52,12 @@ function UserList({users,userRepos}) {
                         
                     )
                 })}
-            </div> : null}
-            {(finalUser)? <UsersInfo finalUser={finalUser} userRepos={finalUserRepo}/> : null  }
-            
+          </> : null}            
         </div>
+        {(finalUserRepo)? <UsersInfo 
+            finalUser={finalUser} 
+            userRepos={finalUserRepo}/> : null }
+      </>
     )
 }
 
